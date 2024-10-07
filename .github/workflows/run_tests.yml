@@ -6,10 +6,15 @@ on:
       deployment_target:
         description: Choose target
         required: true
-        default: forms_test
+        default: elements_test
         type: choice
         options:
+          - elements_test
           - forms_test
+          - alerts_frame_windows_test
+          - widgets_test
+          - interactions_test
+          - all
 
 jobs:
   test:
@@ -26,7 +31,22 @@ jobs:
         run: sudo apt-get install google-chrome-stable
       - name: install dependencies
         run: pip install -r requirements.txt
+      - name: elements_test
+        if: "github.event.inputs.deployment_target == 'elements_test'"
+        run: pytest tests/elements_test.py
       - name: forms_test
         if: "github.event.inputs.deployment_target == 'forms_test'"
         run: pytest tests/forms_test.py
+      - name: alerts_frame_windows_test
+        if: "github.event.inputs.deployment_target == 'alerts_frame_windows_test'"
+        run: pytest tests/alerts_frame_windows_test.py
+      - name: widgets_test
+        if: "github.event.inputs.deployment_target == 'widgets_test'"
+        run: pytest tests/widgets_test.py
+      - name: interactions_test
+        if: "github.event.inputs.deployment_target == 'interactions_test'"
+        run: pytest tests/interactions_test.py
+      - name: all
+        if: "github.event.inputs.deployment_target == 'all'"
+        run: pytest
 #       ::TestForms::TestPracticeForm::test_practice_form
