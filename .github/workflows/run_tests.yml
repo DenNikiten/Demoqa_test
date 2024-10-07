@@ -1,0 +1,31 @@
+name: Demoqa_tests
+
+on:
+  workflow_dispatch:
+    inputs:
+      deployment_target:
+        description: Choose target
+        required: true
+        default: forms_test
+        type: choice
+        options:
+          - forms_test
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+      - name: Install Chrome
+        run: sudo apt-get install google-chrome-stable
+      - name: install dependencies
+        run: pip install -r requirements.txt
+      - name: forms_test
+        if: "github.event.inputs.deployment_target == 'forms_test'"
+        run: pytest tests/forms_test.py::TestPracticeForm
