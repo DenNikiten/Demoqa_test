@@ -28,4 +28,4 @@ jobs:
         run: pip install -r requirements.txt
       - name: forms_test
         if: "github.event.inputs.deployment_target == 'forms_test'"
-        run: pytest tests/forms_test.py::TestPracticeForm
+        run: pytest tests/forms_test.py
