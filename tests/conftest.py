@@ -21,7 +21,7 @@ def driver():
 
     service = Service()
     options = webdriver.ChromeOptions()
-    # options.add_argument("--headless")
+    options.add_argument("--headless")
     driver = webdriver.Chrome(service=service, options=options)
     driver.maximize_window()
     yield driver
