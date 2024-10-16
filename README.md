@@ -14,7 +14,7 @@ https://github.com/DenNikiten/Demoqa_test/actions/workflows/run_tests.yml
 
 С сайта github.com клонируйте репозиторий, в используемую вами IDE, следующей командой:
 ```html
-git clone https://github.com/DenNikiten/TaskEM.git
+git clone https://github.com/DenNikiten/Demoqa_test.git
 ```
 
 ### Создайте виртуальное окружение с помощью следующих команд:
