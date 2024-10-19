@@ -1,0 +1,12 @@
+.dockerignore
+.idea
+.git
+.gitignore
+.github
+.env
+.venv/
+**/venv/*
+**/.pytest_cache
+**/__pycache__
+!/docker_results
+**/python
